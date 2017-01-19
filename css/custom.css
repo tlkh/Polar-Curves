@@ -1,0 +1,18 @@
+/* Show it is fixed to the top */
+body {
+    padding-top: 4.5rem;
+}
+
+.contentbox{
+    text-align: center;
+}
+
+.contentbox div{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.expbox {
+    width: 475px;
+    text-align: left;
+}
