@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cosine Graph</title>
+    <title>Sine Square Graph</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,15 +27,15 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="sine.html">sin(θ)</a>
+                    <a class="nav-link" href="sine.html">sin(nθ)</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="sine2.html">sin<sup>2</sup>(θ)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cosine.html">cos(θ)</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="cosine2.html">cos<sup>2</sup>(θ)</a>
                 </li>
         </div>
@@ -43,8 +43,8 @@
 
     <div class="container">
         <div class="contentbox">
-            <h1>Cosine<sup>2</sup> Curve</h1>
-            <p>`r = a + bcos^2(θ)`</p>
+            <h1>Sine<sup>2</sup> Curve</h1>
+            <p>`r = a + bsin^2(θ)`</p>
             <!-- Graph Unit START -->
             <div id="jxgbox_cos2" class="jxgbox"></div>
             <script type="text/javascript">
@@ -65,7 +65,7 @@
                 });
 
                 var c = board.create("curve", [function (phi) {
-                    return a.Value() + b.Value() * Math.pow(Math.cos(phi), 2);
+                    return a.Value() + b.Value() * Math.pow(Math.sin(phi), 2);
                 }, [0, 0], 0, 2 * Math.PI], {
                     curveType: "polar",
                     strokeColor: "black",
@@ -78,10 +78,10 @@
 
                 var tp = board.create("point", [
                 function () {
-                        return (a.Value() + b.Value() * Math.pow(Math.cos(t.Value()), 2)) * Math.cos(t.Value());
+                        return (a.Value() + b.Value() * Math.pow(Math.sin(t.Value()), 2)) * Math.cos(t.Value());
                 },
                 function () {
-                        return (a.Value() + b.Value() * Math.pow(Math.cos(t.Value()), 2)) * Math.sin(t.Value());
+                        return (a.Value() + b.Value() * Math.pow(Math.sin(t.Value()), 2)) * Math.sin(t.Value());
                 }
             ], {
                     name: "θ"

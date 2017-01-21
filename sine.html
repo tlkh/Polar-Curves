@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cosine Graph</title>
+    <title>Sine Graph</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,14 +26,13 @@
         <a class="navbar-brand" href="index.html">Polar Curves</a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="sine.html">sin(θ)</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="sine.html">sin(nθ)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sine2.html">sin<sup>2</sup>(θ)</a>
                 </li>
-                <li class="nav-item active">
-                    <!-- add the active class to the link to current page -->
+                <li class="nav-item">
                     <a class="nav-link" href="cosine.html">cos(θ)</a>
                 </li>
                 <li class="nav-item">
@@ -44,35 +43,37 @@
 
     <div class="container">
         <div class="contentbox">
-            <h1>Cosine Curve</h1>
-            <p>`r = a + bcos(θ)`</p>
+            <h1>Sine Curve</h1>
+            <p>`r = a + sin(bθ)`</p>
             <!-- use ` to bound equations so that they show up using MathJax -->
             <!-- Graph Unit START -->
             <div id="jxgbox_cos1" class="jxgbox"></div>
             <script type="text/javascript">
                 var board = JXG.JSXGraph.initBoard("jxgbox_cos1", {
-                    boundingbox: [-3, 5, 8, -5], //axis limits: left, top, right, bottom
+                    boundingbox: [-4, 4, 4, -4], //axis limits: left, top, right, bottom
                     axis: true,
                     showNavigation: false,
-                    showCopyright: false
+                    showCopyright: false,
+                    keepAspectRatio: true
                 });
-                var a = board.create("slider", [[2, 4], [5, 4], [1, 0, 4]], {
+                var a = board.create("slider", [[1, 3.5], [3, 3.5], [0, 0, 4]], {
                     // [^] row above: object created is slider; (x,y) of start; (x,y) of end; starting value, min value, max value
                     name: "a"
                 });
-                var b = board.create("slider", [[2, 3], [5, 3], [1, 0, 4]], {
-                    name: "b"
+                var b = board.create("slider", [[1, 2.5], [3, 2.5], [1, 0, 8]], {
+                    name: "b",
+                    snapWidth: 0.1
                 });
-                var t = board.create("slider", [[2, 2], [5, 2], [0, 0, 2 * Math.PI]], {
+                var t = board.create("slider", [[1, 1.5], [3, 1.5], [0, 0, 2 * Math.PI]], {
                     name: "θ"
                 });
 
                 var c = board.create("curve", [function (phi) {
-                    return a.Value() + b.Value() * Math.cos(phi);
+                    return a.Value() + Math.sin(b.Value() * phi);
                 }, [0, 0], 0, 2 * Math.PI], {
                     curveType: "polar",
                     strokeColor: "black",
-                    strokewidth: 4
+                    strokewidth: 2
                 });
 
                 //create the draggable point
@@ -89,11 +90,11 @@
                 var tp = board.create("point", [
                 function () {
                         //x = (a + b cos(t)) cos t
-                        return (a.Value() + b.Value() * Math.cos(t.Value())) * Math.cos(t.Value());
+                        return (a.Value() + Math.sin(b.Value() * t.Value())) * Math.cos(t.Value());
                 },
                 function () {
                         //y = (a + b cos(t)) sin t
-                        return (a.Value() + b.Value() * Math.cos(t.Value())) * Math.sin(t.Value());
+                        return (a.Value() + Math.sin(b.Value() * t.Value())) * Math.sin(t.Value());
                 }
             ], {
                     name: "θ"
@@ -103,12 +104,7 @@
             <br>
             <div class="expbox">
                 <!-- short explanation here -->
-                <p class="lead">The graphs of `r = a + b cos(θ)` fall into three categories:
-                    <br> (a) `a = b` (cardioid)
-                    <br> (b) `a
-                    < b` (re-entrant loop)<br>
-                        (c) `a > b` (no cusp or non-re-entrant loop)
-                        <br>
+                <p class="lead">Placeholder.
                 </p>
             </div>
         </div>
