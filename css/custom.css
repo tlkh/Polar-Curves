@@ -12,7 +12,26 @@ body {
     margin-right: auto;
 }
 
+.jxgbox {
+    width: 400px;
+    height:400px;
+}
+
 .expbox {
-    width: 475px;
+    width: 400px;
     text-align: left;
+}
+
+@media screen and (min-width: 576px) {
+
+    .jxgbox {
+        width:475px;
+        height:400px
+    }
+
+    .expbox {
+        width: 475px;
+        text-align: left;
+    }
+
 }
